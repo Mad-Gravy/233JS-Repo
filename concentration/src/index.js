@@ -1,7 +1,4 @@
-/*  
-    Joseph Teague, 4/10/25
-
-    Overview
+/*  Overview
     This application simulates a concentration or memory game of 20 cards.
     The game begins with 20 (10 pairs of 2) cards "face down" on the board.
     The user clicks 2 cards at a time.  The cards are displayed "face up".
@@ -95,7 +92,7 @@ function fillImages() {
 // shuffles the elements in the images array
 function shuffleImages() {
     // create a for loop that iterates through the images array
-    for (let i = 0; i < images.length; i++) {
+    for (i = 0; i < images.length; i++) {
         // set rndIndex to a random number between 0 and 19
         let rndIndex = Math.floor(Math.random() * images.length);
         // set a variable called temp to the current image from the array
@@ -115,7 +112,7 @@ function enableAllCards() {
     // create a variable called cards and set it equal to the elements on the page with a name of card
     let cards = document.getElementsByName('card');
     // create a for loop that iterates through cards
-    for (let i = 0; i < cards.length; i++) {
+    for (i = 0; i < cards.length; i++) {
         // set the onclick property for the current element in cards to handleClick
         cards[i].onclick = handleClick;
         // set the style.cursor to 'pointer' too
@@ -130,7 +127,7 @@ function enableAllRemainingCards() {
     // create a variable called cards and set it equal to the elements on the page with a name of card
     let cards = document.getElementsByName('card');
     // create a for loop that iterates through cards
-    for (let i = 0; i < cards.length; i++) {
+    for (i = 0; i < cards.length; i++) {
         // if the style.backgroundImage of the current element in cards is not 'none'
         if (cards[i].style.backgroundImage !== 'none') {
             // set the onclick property for the current element in cards to handleClick
@@ -158,7 +155,7 @@ function showBack(index) {
 // calls showBack in the body of a for loop
 function showAllBacks() {
     // create a loop that iterates through indices 0 to 19
-    for (let i = 0; i < images.length; i++) {
+    for (i = 0; i < images.length; i++) {
         // call the function showBack for the current index
         showBack(i);
     // end for loop
@@ -251,9 +248,7 @@ function checkCards() {
 // 2 cards are a match if they have the same value
 // cardvs.jpg is the pattern for card file names
 function isMatch() {
-    const value1 = images[firstPick].charAt(imagePath.length + 4);
-    const value2 = images[secondPick].charAt(imagePath.length + 4);
-    return value1 === value2;
+    return images[firstPick] === images[secondPick];
 }
 
 // removes one card from the board based on it's index
