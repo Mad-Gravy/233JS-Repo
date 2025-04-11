@@ -1,6 +1,7 @@
 /*  
-Joseph Teague, 4/9/2025
 
+    Joseph Teague, 4/10/25
+    
     Overview
     This application simulates a simple stop watch on the page.  The user 
     can start, stop or reset the clock using the buttons and link on the page.
@@ -60,7 +61,7 @@ function incrementTimer() {
     // increment the elapsedTime
     elapsedTime += 1;
     // calculate the minutes and seconds from the elapsedTime
-    const minutes = Math.floor(elapsedTime / 60);
+    let minutes = Math.floor(elapsedTime / 60);
     let seconds = elapsedTime % 60;      
     // calculate the number of minutes and seconds as follows:
          // minutes = the integer portion of (elapsedTime / 60)
