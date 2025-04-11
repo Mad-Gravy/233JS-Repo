@@ -31,29 +31,8 @@ class Board
        In the body call fillCards and shuffleCards. */
     constructor() 
         {
-        fillCards()         
-            {
-            const values = ['a', 'k', 'q', 'j', 't', '9', '8', '7', '6', '5'];
-            const suits = ['h', 's'];
-            for(let s = 0; s < suits.length; s++)
-                {
-                for (let v = 0; v < values.length; v++)
-                    {
-                    this.cards.push(new Card(suits[s], values[v]));
-                    }
-                }
-            }
-
-        shuffleCards() 
-            {
-                for (let i = 0; i < this.cards.length; i++) 
-                    {
-                    let rnd = Math.floor(Math.random() * this.cards.length)
-                    let temp = this.cards[i];
-                    this.cards[i] = this.cards[rnd];
-                    this.cards[rnd] = temp;
-                    }
-            }
+        this.fillCards();
+        this.shuffleCards();
         }
     /* Add a method named showCards.
         Get an array of objects referencing the HTML elements with the name attribute of card.
@@ -72,11 +51,12 @@ class Board
                     } 
                 else if (this.cards[i].isFaceUp) 
                     {
-                    cards[i].style.backgroundImage = `url(images/${this.cards[i].suit}${this.cards[i].value}.png)`;
+                    cards[i].style.backgroundImage = `url(Cards/card${this.cards[i].value}${this.cards[i].suit}.jpg)`;
                     } 
                 else 
                     {
-                    cards[i].style.backgroundImage = 'url(images/back.png)';
+                    cards[i].style.backgroundImage = 'url(Cards/black_back.jpg)';
+                    // cards[i].style.backgroundColor = 'blue';
                     }
                 }
         }
@@ -119,6 +99,7 @@ class Board
         Compare the cards at the two indicies and return true if they match. */    
     checkCards(firstPickIndex, secondPickIndex)
         {
+            // console.log("Comparing:", this.cards[firstPickIndex].value, "and", this.cards[secondPickIndex].value);
             if (this.cards[firstPickIndex].value == this.cards[secondPickIndex].value)
                 {
                 this.cards[firstPickIndex].isMatched = true;
@@ -129,6 +110,20 @@ class Board
                 {
                 return false;
                 }
+                
+        }
+
+    enableRemainingCards() 
+        {
+        const cards = document.getElementsByName('card');
+        cards.forEach((card, i) => 
+            {
+            if (!this.cards[i].isMatched) 
+                {
+                card.onclick = () => this.handleClick(i);
+                card.style.cursor = 'pointer';
+                }
+            });
         }
 }
 
@@ -214,3 +209,8 @@ class Game {
 }
 
 
+window.onload = () => 
+    {
+    const game = new Game();
+    game.board.showCards();
+    };
