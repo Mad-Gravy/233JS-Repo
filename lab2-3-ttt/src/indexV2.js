@@ -113,7 +113,6 @@ class GameUI {
   }
 }
 
-// Initialize the game when the page loads
 window.onload = () => {
   new GameUI();
 };
