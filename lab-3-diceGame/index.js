@@ -4,4 +4,5 @@
 const NUMBER_OF_DIE = 6;
 const NUMBER_OF_SIDES = 6;
 
-let Farkle = new Game();
+let farkle = new Game();
+

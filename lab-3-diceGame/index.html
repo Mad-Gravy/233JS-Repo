@@ -17,10 +17,8 @@
         <button id="addPlayer">Add Player to Game!</button>
     </div>
     <br />
-    <div id="scoreboard">
-    </div>
     
-    <div id="gameArea">        
+    <div id="gameArea" style="display: none;">        
             <div id="diceContainer">
 
             <h2>Rolled Dice</h2>
@@ -33,8 +31,11 @@
         <button id="endTurn">End My Turn!</button>
         </div>
         <br />
-        
-        <div id="scoreDisplay">Score: 0</div>
+
+        <div id="scoreboard">
+            <h2>Scoreboard</h2>
+            <ul id="playerScores"></ul>
+        </div>
     </div>
 
     <script src="player.js"></script>
