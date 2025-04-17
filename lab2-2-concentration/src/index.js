@@ -2,7 +2,7 @@
 
 //Joseph Teague, 4/11/25
 
-const DELAY = 200;
+const DELAY = 2000;
 
 // Declare a class named Card.
 class Card 
