@@ -44,7 +44,7 @@ class Board
           If the card isn't matched and isn't face up, set backgroundImage to the image of the card back. */
     showCards()
         {
-        console.log("Showing cards");
+        // console.log("Showing cards");
         const cards = document.getElementsByName("card");
         for (let i = 0; i < cards.length; i++) 
             {
@@ -72,7 +72,7 @@ class Board
         Push the new card onto the cards array. */
     fillCards()
         {
-        console.log("Filling cards");
+        // console.log("Filling cards");
         const values = ['a', 'k', 'q', 'j', 't', '9', '8', '7', '6', '5'];
         const suits = ['h', 's'];
         for(let s = 0; s < suits.length; s++)
@@ -89,7 +89,7 @@ class Board
         Do this in a way similar to that used in the previous version of the game. */
     shuffleCards()
         {
-        console.log("Shuffling cards");
+        // console.log("Shuffling cards");
         for (let i = 0; i < this.cards.length; i++) 
             {
             let rnd = Math.floor(Math.random() * this.cards.length)
@@ -104,7 +104,7 @@ class Board
         Compare the cards at the two indicies and return true if they match. */    
     checkCards(firstCard, secondCard)
         {
-        console.log("Checking cards");
+        // console.log("Checking cards");
 
         if (firstCard == undefined || secondCard == undefined) {
             return false
@@ -126,7 +126,7 @@ class Board
 
     enableRemainingCards() 
         {
-        console.log("Enabling remaining cards");
+        // console.log("Enabling remaining cards");
         const cards = document.getElementsByName('card');
         cards.forEach((card, i) => 
             {
@@ -159,10 +159,10 @@ class Game {
         {
         this.board = new Board();
         const cards = document.getElementsByName("card");
-            console.log(`card length = ${cards.length}`);
+            // console.log(`card length = ${cards.length}`);
         for (let i = 0; i < cards.length; i++) 
             {
-            console.log(`setting up on click for ${cards[i]}`);
+            // console.log(`setting up on click for ${cards[i]}`);
             cards[i].onclick = () => this.handleClick(i);
             }
         }
@@ -182,13 +182,13 @@ class Game {
             set a timeout for 2 seconds after which turnCardsBack will be called */
     handleClick(index)
         {
-            console.log(`Handling click ${index} ${this.firstPickIndex} ${this.secondPickIndex}`);
+            // console.log(`Handling click ${index} ${this.firstPickIndex} ${this.secondPickIndex}`);
 // --------------------------------------------------------------------------------------------------- //
             const card = this.board.cards[index];
 // --------------------------------------------------------------------------------------------------- //
             if (this.firstPickIndex == -1) 
                 {
-                    console.log("This is the first pick")
+                    // console.log("This is the first pick")
                     this.firstPickIndex = index;
                     card.isFaceUp = true;
                     this.board.showCards();
@@ -204,10 +204,10 @@ class Game {
                     this.board.showCards();
                     this.tries++;
                     // debugger;
-                    console.log(`${firstPick.value} ${secondPick.value}`)
+                    // console.log(`${firstPick.value} ${secondPick.value}`)
                 // ------------------------------------ //
                     if (this.board.checkCards(firstPick, secondPick)) {
-                        console.log("Found match");
+                        // console.log("Found match");
                         this.matches++;
                         this.firstPickIndex = -1;
                         this.secondPickIndex = -1;
@@ -223,7 +223,7 @@ class Game {
                 // ------------------------------- //
                     else 
                         {
-                            console.log("no match");
+                            // console.log("no match");
                             setTimeout(() => this.turnCardsBack(), DELAY);
                         }
                 }
@@ -243,7 +243,7 @@ class Game {
         Call the showCards method. */
     turnCardsBack()
         {
-            console.log("Turning cards back");
+            // console.log("Turning cards back");
             this.board.cards[this.firstPickIndex].isFaceUp = false;
             this.board.cards[this.secondPickIndex].isFaceUp = false;
             this.firstPickIndex = -1;
