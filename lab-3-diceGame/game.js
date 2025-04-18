@@ -1,10 +1,21 @@
 // Joseph Teague, 4/16/25
 
 class Game {
+
+    #NUMBER_OF_DIE = 6;
+    #NUMBER_OF_SIDES = 6;
+
+    #players
+    #dice
+
     constructor() {
-        this.players = []; // Array to store player objects
+        this.#players = []; // Array to store player objects
+        this.#dice = [];
         this.init(); // Initialize the game
     }
+
+    get dice() {return this.#dice}
+    get players() {return this.#players}
 
     // Initialize the game
     init() {
@@ -19,6 +30,10 @@ class Game {
                 alert('Please enter a valid player name.');
             }
         };
+
+        document.getElementById('rollButton').onClick = () => {
+            this.rollDice();
+        }
     }
     // Add a new player
     addPlayer(name) {
@@ -42,6 +57,25 @@ class Game {
             listItem.textContent = `Player ${player.number}: ${player.name} - Score: ${player.roundScore}`;
             scoreboard.appendChild(listItem);
         });
+    }
+
+    // Method for next round
+    nextRound() {
+
+    }
+
+    // Rolling Dice
+    rollDice() {
+
+    }
+
+    // getting winner
+    getGameWinner() {
+
+    }
+
+    startNewGame() {
+
     }
 }
 
