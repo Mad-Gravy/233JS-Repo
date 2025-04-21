@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "A web app for managing a todo list",
   "main": "index.html",
-  "scripts": {
+  "scripts": { 
     "webpack": "webpack",
     "build": "webpack --config webpack.config.js",
     "watch": "webpack serve --open"
