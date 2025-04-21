@@ -5,7 +5,7 @@ const copyPlugin = require("copy-webpack-plugin");
 module.exports = {
     mode: 'development',
     entry: {
-      index: './src/js/indexStart.js'
+      index: './src/js/index.js'
     },
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -32,7 +32,7 @@ module.exports = {
     },
     plugins: [
       new htmlWebpackPlugin({
-        template: path.resolve(__dirname, "./src/indexStart.html"),
+        template: path.resolve(__dirname, "./src/index.html"),
         chunks: ["index"],
         inject: "body",
         filename: "index.html"

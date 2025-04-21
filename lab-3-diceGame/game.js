@@ -2,7 +2,7 @@
 
 class Game {
 
-    #NUMBER_OF_DIE = 6;
+    #NUMBER_OF_DIE = 5;
     #NUMBER_OF_SIDES = 6;
 
     #players
