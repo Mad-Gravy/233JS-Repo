@@ -80,4 +80,4 @@ class Game {
 }
 
 // Initialize the game
-let farkle = new Game();
+let shipCptCrew = new Game();
