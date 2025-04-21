@@ -7,15 +7,18 @@ class Game {
 
     #players
     #dice
+    #round
 
     constructor() {
         this.#players = []; // Array to store player objects
-        this.#dice = [];
+        this.#dice = []; //Initialize the dice
+        this.#round = 0;
         this.init(); // Initialize the game
     }
 
     get dice() {return this.#dice}
     get players() {return this.#players}
+    get round() {return this.#round}
 
     // Initialize the game
     init() {
@@ -60,13 +63,15 @@ class Game {
     }
 
     // Method for next round
-    nextRound() {
+    newRound() {
 
     }
 
     // Rolling Dice
     rollDice() {
-
+        let player = this.getCurrentPlayer();
+        player.roll(this.#dice);
+        let rollScore = player.calculateScore(this.#dice, this.#round);
     }
 
     // getting winner
