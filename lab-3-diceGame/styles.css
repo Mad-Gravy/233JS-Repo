@@ -14,3 +14,12 @@
     font-size: 20px;
     background-color: lightgray;
 }
+
+#diceContainer {
+    margin-top: 10px;
+}
+
+.die {
+    width: 60px;
+    margin-right: 10px;
+}
