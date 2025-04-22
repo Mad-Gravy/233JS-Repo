@@ -97,7 +97,7 @@ class Game {
             }
         });
     
-        alert(`🏆 ${winner.name} wins the round with a cargo score of ${winner.roundScore}!`);
+        alert(`${winner.name} wins the round with a cargo score of ${winner.roundScore}!`);
     
         // Reset for new round
         this.#currentPlayerIndex = 0;
@@ -119,7 +119,7 @@ class Game {
 
         if (this.#currentPlayerIndex < this.#players.length) {
             document.getElementById("turnDisplay").textContent = 
-                `🎲 It's ${this.#players[this.#currentPlayerIndex].name}'s turn!`;
+                `It's ${this.#players[this.#currentPlayerIndex].name}'s turn!`;
         } else {
             this.endRound();
         }
