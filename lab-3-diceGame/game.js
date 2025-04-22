@@ -56,6 +56,8 @@ class Game {
         if (this.players.length === 1) {
             document.getElementById('gameArea').style.display = 'block';
         }    // gameArea will show only after the first player has been added
+        document.getElementById("turnDisplay").textContent = 
+    `It's ${this.#players[0].name}'s turn!`;
     }
 
     // Update the scoreboard
@@ -115,6 +117,13 @@ class Game {
         // Move to next player
         this.#currentPlayerIndex++;
 
+        if (this.#currentPlayerIndex < this.#players.length) {
+            document.getElementById("turnDisplay").textContent = 
+                `🎲 It's ${this.#players[this.#currentPlayerIndex].name}'s turn!`;
+        } else {
+            this.endRound();
+        }
+
         if (this.#currentPlayerIndex >= this.#players.length) {
             this.endRound(); // All players are done
         }
@@ -140,6 +149,7 @@ class Game {
         alert("Game reset. Add players to begin a new game!");
 
         document.getElementById('playerName').value = '';
+        document.getElementById("turnDisplay").textContent = "Add players to begin!";
     }
 }
 
