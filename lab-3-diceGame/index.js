@@ -6,3 +6,4 @@ const NUMBER_OF_SIDES = 6;
 
 // Create a new Game instance to start the app
 let shipCptCrew = new Game();
+// ask Prof. Bird about this code in multiple files

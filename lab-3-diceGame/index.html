@@ -10,26 +10,22 @@
 
 <body>
     <h1>Ship, Captain, Crew - Dice Game</h1>
-    <p>Welcome to Ship, Captain, Crew! Roll the dice and try to score points!</p>
     <h2>Who's Playing?</h2>
     <div id="newPlayer">
         <input type="text" id="playerName" placeholder="Name of new player here!"><br />
         <button id="addPlayer">Add Player to Game!</button>
-    </div>
-    <br />
-    <button id="newGameButton">Start New Game</button>
+    </div>   
     
     <div id="gameArea" style="display: none;">        
             <div id="diceContainer">
 
             <h2>Rolled Dice</h2>
             <div id="rolledDice"></div>
-            <button id="rollButton">Roll Dice</button>
+            <button id="rollButton">Roll Dice</button><button id="endTurn">End My Turn!</button>
 
-            <h2>Withold</h2>
+            <h2>Ship(6), Captain(5), and Crew(4)</h2>
         <div id="setAsideDice"></div>
 
-        <button id="endTurn">End My Turn!</button>
         </div>
         <br />
 
@@ -38,6 +34,8 @@
             <ul id="playerScores"></ul>
         </div>
     </div>
+
+    <button id="newGameButton">Start New Game</button>
 
     <script src="player.js"></script>
     <script src="die.js"></script>  

@@ -1,25 +1,71 @@
-#rolledDice, #setAsideDice {
+/* General Page Styling */
+body {
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    background-color: #eef2f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Game Board Container */
+.game-board {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 3px solid #444;
+    border-radius: 12px;
+    background-color: #f0f8ff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Dice Layout */
+#rolledDice,
+#setAsideDice {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
-    margin-top: 10px;
-}
-
-#rolledDice div, #setAsideDice div {
-    width: 50px;
-    height: 50px;
-    border: 1px solid black;
-    display: flex;
+    margin: 10px 0;
     justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    background-color: lightgray;
 }
 
-#diceContainer {
-    margin-top: 10px;
-}
-
+/* Dice Images */
 .die {
     width: 60px;
-    margin-right: 10px;
+    height: 60px;
+    transition: transform 0.2s;
+}
+
+.die:hover {
+    transform: scale(1.1);
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px 5px;
+}
+
+button:hover {
+    background-color: #004c99;
+}
+
+/* Turn Display Text */
+#turnDisplay {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    margin-top: 15px;
+}
+
+/* Scoreboard */
+#playerScores {
+    list-style-type: none;
+    padding: 0;
+    font-size: 18px;
 }
