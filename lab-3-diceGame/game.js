@@ -11,6 +11,7 @@ class Game {
     #dice                 // array of Die objects
     #round                // round counter
     #currentPlayerIndex = 0;  // index of the current player
+    #rollCount = 0    // number of rolls taken this turn
 
     constructor() {
         this.#players = [];
@@ -26,6 +27,9 @@ class Game {
     get dice() { return this.#dice; }
     get players() { return this.#players; }
     get round() { return this.#round; }
+    get rollCount() { return this.#rollCount; }
+
+    set rollCount(value) {this.#rollCount = value; }
 
     // Connect button events
     init() {
@@ -107,7 +111,7 @@ class Game {
         const player = this.#players[this.#currentPlayerIndex];
 
         // Prevent more than 3 rolls
-        if (player.rollCount >= 3) {
+        if (this.#rollCount >= 3) {
             alert("You've used all your rolls!");
             return;
         }
@@ -140,7 +144,7 @@ class Game {
         const gotShipCaptainCrew = savedValues.includes(6) && savedValues.includes(5) && savedValues.includes(4);
 
         // Either scored or out of rolls
-        if (gotShipCaptainCrew || player.rollCount >= 3) {
+        if (gotShipCaptainCrew || this.#rollCount >= 3) {
             const cargoDice = gotShipCaptainCrew
                 ? this.#dice.filter(d => !player.savedDice.includes(d))
                 : [];

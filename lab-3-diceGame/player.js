@@ -26,7 +26,8 @@ class Player {
     // Setters
     set number(value) { this.#number = value; }
     set roundScore(value) { this.#roundScore = value; }
-
+    set rollCount(value) {this.#rollCount = value; }
+    
     // Increase the roll count by 1
     incrementRollCount() {
         this.#rollCount++;
