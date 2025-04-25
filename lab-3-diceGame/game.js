@@ -220,5 +220,3 @@ class Game {
     }
 }
 
-// Start the game!
-let shipCptCrew = new Game();
