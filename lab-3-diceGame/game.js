@@ -51,6 +51,9 @@ class Game {
         document.getElementById('rollButton').onclick = () => {
             this.rollDice();
         };
+        document.getElementById('endTurn').onclick = () => {
+            this.endTurnEarly();
+        };
     }
 
     // Add a new player to the list
@@ -138,6 +141,7 @@ class Game {
 
         this.showDice();
         player.incrementRollCount();
+        this.#rollCount++;
 
         // Check if the player has 6, 5, and 4
         const savedValues = player.savedDice.map(d => d.value);
@@ -173,7 +177,10 @@ class Game {
             // Slight delay so user sees rolled dice before alert
             setTimeout(() => {
                 alert(message);
-
+                this.#rollCount = 0;
+                this.#dice.forEach(die => die.reset());
+                this.showDice();
+            
                 if (hasMorePlayers) {
                     document.getElementById("turnDisplay").textContent =
                         `It's ${this.#players[this.#currentPlayerIndex].name}'s turn!`;
@@ -182,6 +189,53 @@ class Game {
                 }
             }, 800);
         }
+    }
+
+    endTurnEarly() {
+        const player = this.#players[this.#currentPlayerIndex];
+    
+        // If they have ship, captain, and crew, calculate cargo
+        const savedValues = player.savedDice.map(d => d.value);
+        const gotShipCaptainCrew = savedValues.includes(6) && savedValues.includes(5) && savedValues.includes(4);
+    
+        const cargoDice = gotShipCaptainCrew
+            ? this.#dice.filter(d => !player.savedDice.includes(d))
+            : [];
+    
+        const cargo = cargoDice.reduce((sum, die) => sum + die.value, 0);
+        player.roundScore = cargo;
+    
+        this.updateScoreboard();
+    
+        let message = `${player.name}, you ended your turn.\n`;
+        if (gotShipCaptainCrew) {
+            message += `Your cargo score is ${cargo}.`;
+        } else {
+            message += `You didn't get ship, captain, and crew — score is 0.`;
+        }
+    
+        this.#currentPlayerIndex++;
+        const hasMorePlayers = this.#currentPlayerIndex < this.#players.length;
+    
+        if (hasMorePlayers) {
+            message += `\nIt's now ${this.#players[this.#currentPlayerIndex].name}'s turn.`;
+        } else {
+            message += `\nAll players have gone. The round is ending.`;
+        }
+    
+        setTimeout(() => {
+            alert(message);
+            this.#rollCount = 0;  // Makes sure new player starts with 0 rolls
+            this.#dice.forEach(die => die.reset());
+            this.showDice();
+        
+            if (hasMorePlayers) {
+                document.getElementById("turnDisplay").textContent =
+                    `It's ${this.#players[this.#currentPlayerIndex].name}'s turn!`;
+            } else {
+                this.endRound();
+            }
+        }, 800);
     }
 
     // Handle end-of-round logic and find the winner

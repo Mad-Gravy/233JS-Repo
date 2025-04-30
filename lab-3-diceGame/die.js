@@ -19,4 +19,8 @@ class Die
     {
         this.#value = Math.floor(Math.random() * 6) + 1;
     }
+
+    reset() {
+        this.value = null;
+    }
 }
